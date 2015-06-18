@@ -1,4 +1,4 @@
- A simple function to load .pts files with python. Once the file is on your path, you simply use it as follows:
+ A function to load .pts files with python. Once the file is on your path, you simply use it as follows:
 
     from pts_loader import load
 
