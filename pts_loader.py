@@ -1,5 +1,11 @@
-"""pts_loader provides a load() method to read data from .pts files of
- point clouds"""
+# pts_loader provides a load() method to read data from .pts files of
+# point clouds
+#
+# --------------------------------------------------------
+# pts_loader
+# Licensed under The MIT License [see LICENSE.md for details]
+# Copyright (C) 2017 Samuel Albanie 
+# --------------------------------------------------------
 
 def load(path):
     """takes as input the path to a .pts and returns a list of 
