@@ -7,7 +7,9 @@
 # Copyright (C) 2017 Samuel Albanie 
 # --------------------------------------------------------
 
-def load(path):
+import numpy as np
+
+def load(path, N):
     """takes as input the path to a .pts and returns a list of 
 	tuples of floats containing the points in in the form:
 	[(x_0, y_0, z_0),
@@ -18,13 +20,17 @@ def load(path):
         rows = [rows.strip() for rows in f]
     
     """Use the curly braces to find the start and end of the point data""" 
-    head = rows.index('{') + 1
-    tail = rows.index('}')
-
-    """Select the point data split into coordinates"""
-    raw_points = rows[head:tail]
+    try:
+    	head = rows.index('{') + 1
+    	tail = rows.index('}')
+    	raw_points = rows[head:tail]
+    except:
+    	raw_points = rows
+    # """Select the point data split into coordinates"""
     coords_set = [point.split() for point in raw_points]
 
     """Convert entries from lists of strings to tuples of floats"""
-    points = [tuple([float(point) for point in coords]) for coords in coords_set]
+    points = np.array([tuple([float(point) for point in coords]) for coords in coords_set])
+    idxs   = range(0, points.shape[0])
+    points = points[np.random.choice(idxs,size=N, replace=False)]
     return points
